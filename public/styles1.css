@@ -1,0 +1,58 @@
+body {
+    text-align: center;
+  }
+#patientsTable {
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 130px;
+}
+
+#patientsTable th, #patientsTable td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+#patientsTable th {
+    background-color: #f2f2f2;
+  }
+  
+#nextTokenButton {
+    background-color: violet;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    padding: 4px 4px;
+    border-radius: 3px;
+    font-size: 1.1em;
+}
+#nextTokenButton:active {
+    background-color: red;
+}
+
+form {
+    font-size: 1.2em;
+    margin: 0 auto;
+    position: relative;
+}
+  
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color:black;
+    font: bold;
+}
+input[type="text"], input[type="tel"] {
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    
+  }

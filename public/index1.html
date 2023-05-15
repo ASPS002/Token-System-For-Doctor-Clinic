@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles1.css">
+  <title>Patient Dashboard</title>
+</head>
+
+<!-- Table Structure on the frontend -->
+
+<body>
+  <h1>Token System For Doctor's Clinic </h1>
+  <table id="patientsTable">
+    <thead>
+      <tr>
+        <th>patientname</th>
+        <th>phonenumber</th>
+        <th>tokennumber</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <br>
+
+  <!-- for getting next patient in line i.e moving on to the next token -->
+  <button id="nextTokenButton">Next Token</button>
+
+  <!-- Patient information is submitted using a form and filled by consultant on the frontend -->
+  <form id="patientForm" action="patientDashboard/addPatient" method="POST">
+    <label for="patientname">Patient Name</label>
+    <input type="text" id="patientname" name="patientname" required>
+    <label for="phonenumber">Phone Number</label>
+    <input type="tel" id="phonenumber" name="phonenumber" required>
+    <button type="submit">Generate Token</button>
+  </form>
+
+  <script>
+    const patientForm = document.querySelector('#patientForm');
+    patientForm.addEventListener('submit', (event) => {// on submit 
+
+      event.preventDefault();// not show some default msgs like added or successful
+
+      const formData = new FormData(patientForm);// In this way data was not being able to reach the server side so converted into json string
+      const formObject = Object.fromEntries(formData.entries());
+      const formJson = JSON.stringify(formObject);// when passing formData directly on the server side it was recieved as null even though middlewares were imported
+      // so converted to json string
+
+      // The below code was written because intially before patient was getting added to the table database  another api known as getLastPatient was being called
+      // To avoid that i checked if we are successfully adding patient to the  Postgresql database and then called getlastPatient api                                     
+      fetch('patientDashboard/addPatient', {
+        method: 'POST',
+        // body: JSON.stringify({ patientname: "ujjwal", phonenumber: "1234567890" }),
+        body: formJson,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+
+            return fetch('patientDashboard/getLastPatient');// checking if successfully added then returning last patient
+          } else {
+            console.error('Error adding patient to database.');
+          }
+        })
+        .then(response => response.json())// convert json String to json Object
+        .then(patient => {
+
+          const patientsTableBody = document.querySelector('#patientsTable');
+          const row = document.createElement('tr');
+          row.innerHTML = `
+      <td>${patient.patientname}</td>
+      <td>${patient.phonenumber}</td>
+      <td>${patient.tokennumber}</td>
+    `;
+          if (patient.tokennumber == "T-101") { // marked the first row as green as there are no other patients intially
+            row.style.backgroundColor = "lightgreen";
+          }
+          patientsTableBody.appendChild(row);
+
+        })
+        .catch(error => console.error(error));
+    });
+
+    // when next token buton is clicked
+    const nextTokenButton = document.querySelector('#nextTokenButton');
+    nextTokenButton.addEventListener('click', (event) => {
+
+      event.preventDefault();
+      //notice it is calling currentToken/setCurrentTokenNumber as per our use case
+      fetch('currentToken/setCurrentTokenNumber', { method: "GET" }).then(result => { return result.json() }).then(data => {// always parse result using result.json() as the data from server to client comes in raw and in byte encoded form
+
+        var recievedCurrentTokenNumber = data.currentTokenNumber;
+        var areMorePatientsAvailable = data.areMorePatientsAvailable;
+
+        if (areMorePatientsAvailable) {
+          const tableOnTheTokenDashboard = document.querySelector('#patientsTable');
+          const rows = tableOnTheTokenDashboard.querySelectorAll('tr');
+
+          for (var row = 1; row < rows.length; row++) {
+
+            if (recievedCurrentTokenNumber == (rows[row].cells)[2].innerHTML) {
+              if (row > 1) {
+                rows[row - 1].style.backgroundColor = "white";// make last cell inactive
+              }
+              rows[row].style.backgroundColor = "lightgreen";// make current cell active
+              // do not set td color as white in styles1.css as it overrrides js styling hence it will remain white despite assigning it green
+            }
+          }
+        }
+        else {
+          alert('No More Patients are Available');// if no more patient show alert
+        }
+
+      }).catch(error => console.error(error));
+
+
+    });
+
+
+  </script>
+</body>
+
+</html>

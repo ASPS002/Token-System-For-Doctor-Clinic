@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+  }
+.box {
+    max-width: 200px; 
+    height: 70px; 
+    margin: 0 auto; 
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 4em;
+    font-weight: bold; 
+  }
+  
+.box p {
+    margin: 0;
+    
+}
+
+  
+  
+  

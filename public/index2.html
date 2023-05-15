@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles2.css">
+    <title>Current-Token</title>
+</head>
+
+<body>
+    <h1>Current Token</h1>
+    <div class="box">
+        <p><strong>T-101</strong></p>
+    </div>
+    <script>
+        const ws = new WebSocket('ws://localhost:8080');//establishing connection with websocket
+        
+        ws.addEventListener('message', (event) => { 
+            console.log("reached");
+            console.log(`Received message: ${event.data}`);
+            document.getElementsByClassName('box')[0].innerText = event.data;// as soon as any message is recieved it changes the token number displayed on currenttoken page
+        });
+       
+    </script>
+</body>
+
+</html>
