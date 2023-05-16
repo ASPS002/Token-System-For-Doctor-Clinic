@@ -62,6 +62,14 @@ to display changes in real-time.
   <img width="400" height="200" src="/postgresqlDatabase.png">
 </p>
 
-
+## Resources
+ - [Javascript MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+ - [Node, Express MDN Docs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+ - [HTML MDN Docs](https://developer.mozilla.org/en-US/docs/Web/HTML)
+ - [CSS MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS)
+ - [WebSocket ws](https://github.com/websockets/ws)
+ - [Postgresql](https://www.postgresqltutorial.com/)
+ - [Postgresql using Node.js, express](https://blog.logrocket.com/crud-rest-api-node-js-express-postgresql/)
+ - [Express Routing](https://expressjs.com/en/guide/routing.html)
 
            
