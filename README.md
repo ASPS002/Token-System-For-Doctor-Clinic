@@ -54,7 +54,7 @@ to display changes in real-time.
 ## Demo images
 
 <!-- ![patientDashboard](/patientDashboard.png "Patient Dashboard") -->
-<img src="/patientDashboard.png" width="500" height="300"> <img src="/currentToken.png" width="500" height="300">
+<img align="left" src="/patientDashboard.png" width="450" height="300"> <img align="right" src="/currentToken.png" width="450" height="300">
 
 
 <p align="center">
