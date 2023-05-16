@@ -54,9 +54,10 @@ to display changes in real-time.
 ## Demo images
 
 <!-- ![patientDashboard](/patientDashboard.png "Patient Dashboard") -->
-<img align="left" src="/patientDashboard.png" width="450" height="300"> <img align="right" src="/currentToken.png" width="450" height="300">
-
-
+<p float ="left">
+<img src="/patientDashboard.png" width="450" height="300"> 
+<img src="/currentToken.png" width="450" height="300">
+</p>
 <p align="center">
   <img width="400" height="200" src="/postgresqlDatabase.png">
 </p>
