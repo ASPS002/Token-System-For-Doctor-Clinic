@@ -13,10 +13,10 @@ const path = require('path');
 
 const pg = require('pg');
 const pool = new pg.Pool({
-  user: 'yourname',
+  user: 'your-name',
   host: 'localhost',
   database: 'patientDatabase',
-  password: 'my-password',
+  password: 'your-password',
   port: '5432',
 });
 
