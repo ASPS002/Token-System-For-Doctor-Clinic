@@ -55,7 +55,7 @@ to display changes in real-time.
 
 <!-- ![patientDashboard](/patientDashboard.png "Patient Dashboard") -->
 <p float ="left">
-<img src="/patientDashboard.png" width="450" height="300"> 
+<img src="/patientDashboard.png" width="300" height="300"> 
 <img src="/currentToken.png" width="450" height="300">
 </p>
 <p align="center">
