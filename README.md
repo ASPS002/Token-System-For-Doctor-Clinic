@@ -62,6 +62,9 @@ to display changes in real-time.
   <img width="400" height="200" src="/postgresqlDatabase.png">
 </p>
 
+## Demo Video
+ - [Screen recording showing how it works on localhost](https://drive.google.com/file/d/1OMOmY4zg9Uxb5jI-cXcJvbCz_2MtKQuM/view?pli=1)
+
 ## Resources
  - [Javascript MDN Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
  - [Node, Express MDN Docs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
